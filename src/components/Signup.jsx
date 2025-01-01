@@ -6,7 +6,7 @@ function Signup() {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors,isSubmitting },
   } = useForm()
 
   const onSubmit = (data) => console.log(data)
@@ -76,7 +76,7 @@ function Signup() {
 
 
         })}
-        <button type='submit' className ="bg-slate-600 w-fit p-3 rounded-2xl  text-center lg:text-xs xl:text-xl">
+        <button type='submit' className ="bg-slate-600 w-fit p-3 rounded-2xl  text-center lg:text-xs xl:text-xl" disabled = {isSubmitting}>
                     Sign In
         </button>
         </form>

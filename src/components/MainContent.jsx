@@ -5,7 +5,7 @@ function MainContent() {
         register,
         handleSubmit,
         watch,
-        formState: { errors },
+        formState: { errors , isSubmitting},
       } = useForm()
     
       const onSubmit = (data) => console.log(data);
@@ -32,7 +32,7 @@ function MainContent() {
             </div>
         );
     })}
-    <button type="submit" className ="text-lg md:text-xl bg-black text-white p-3 rounded-xl w-fit ">Submit</button>
+    <button type="submit" className ="text-lg md:text-xl bg-black text-white p-3 rounded-xl w-fit " disabled = {isSubmitting}>Submit</button>
 </form>
 
                         </div>
