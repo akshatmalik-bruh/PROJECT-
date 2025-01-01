@@ -1,7 +1,17 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import { useForm } from "react-hook-form"
 
 function LoginPage() {
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+      } = useForm()
+    
+      const onSubmit = (data) => console.log(data)
+      
   return (
     <>
     
@@ -28,7 +38,7 @@ function LoginPage() {
         
     <div className ="w-full h-1/2 bg-zinc-900 flex flex-col text-white md:h-full p-20 gap-5  justify-center items-center md:w-[32vw]">
     <h1 className='text-white text-center xl:text-2xl lg:text-lg sm:text-xs'>LOGIN</h1>
-        <form action="/lol" method ="post" className='flex flex-col items-center gap-5 justify-center w-full'>
+        <form className='flex flex-col items-center gap-5 justify-center w-full' onSubmit={handleSubmit(onSubmit)}>
         
         
         {[{
@@ -49,8 +59,8 @@ function LoginPage() {
 
             return (
                     <div key = {index} className='flex flex-col gap-5 w-full'>
-                        <label htmlFor={data.ref} className ="xl:text-2xl lg:text-lg sm:text-xs">{data.label}</label>
-                        <input type="text" name = {data.ref} placeholder={data.placeholder} className='text-xs p-2 rounded-lg w-full text-black md:p-3 md:text-lg '  />
+                        <label  className ="xl:text-2xl lg:text-lg sm:text-xs">{data.label}</label>
+                        <input type = { index === 1 ? "password" : "text" }   placeholder={data.placeholder} {...register(data.ref,{required : true})} className='text-xs p-2 rounded-lg w-full text-black md:p-3 md:text-lg '  />
 
                         </div>
                     
@@ -63,9 +73,9 @@ function LoginPage() {
 
 
         })}
-        <button type='submit' className ="bg-slate-600 w-fit p-3 rounded-2xl  text-center lg:text-xs xl:text-xl">
-                    Sign In
-        </button>
+        <input type='submit' className ="bg-slate-600 w-fit p-3 rounded-2xl  text-center lg:text-xs xl:text-xl" value = "Submit" />
+                    
+        
         </form>
          </div>
          

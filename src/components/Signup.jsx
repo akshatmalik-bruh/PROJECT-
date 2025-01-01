@@ -1,6 +1,15 @@
 import React from 'react'
+import {useForm} from "react-hook-form";
 
 function Signup() {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm()
+
+  const onSubmit = (data) => console.log(data)
   return (
     <>
              <div className=" flex flex-col h-screen w-full md:flex-row">
@@ -24,8 +33,8 @@ function Signup() {
    
         
     <div className ="w-full h-full bg-zinc-900 flex flex-col text-white md:p-20 md:h-full p-5 gap-5  justify-center items-center md:w-[32vw]">
-    <h1 className='text-white text-center xl:text-2xl lg:text-lg sm:text-xs'>LOGIN</h1>
-        <form action="/lol" method ="post" className='flex flex-col items-center gap-5 justify-center w-full'>
+    <h1 className='text-white text-center xl:text-2xl lg:text-lg sm:text-xs'>SIGN UP</h1>
+        <form onSubmit ={handleSubmit(onSubmit)} className='flex flex-col items-center gap-5 justify-center w-full'>
         
         
         {[{
@@ -38,23 +47,23 @@ function Signup() {
 
 
         },{
-            reference1 : "password",
-            label : "Enter the password",
-            placeholder: "Enter the password......",
-            ref : "password"
-        },{
           label : "Enter email......",
           placeholder : "Email",
           ref:"Email",
         
           reference1 : "Email",
           
-        }].map((data,index) =>{
+        },{
+          reference1 : "password",
+          label : "Enter the password",
+          placeholder: "Enter the password......",
+          ref : "password"
+      }].map((data,index) =>{
 
             return (
                     <div key = {index} className='flex flex-col gap-5 w-full'>
-                        <label htmlFor={data.ref} className ="xl:text-2xl lg:text-lg sm:text-xs">{data.label}</label>
-                        <input type="text" name = {data.ref} placeholder={data.placeholder} className='text-xs p-2 rounded-lg w-full text-black md:p-3 md:text-lg '  />
+                        <label className ="xl:text-2xl lg:text-lg sm:text-xs">{data.label}</label>
+                        <input type={index === 2? "password" : index === 1 ? "email" : "text"} {...register(data.ref,{required : true})} placeholder={data.placeholder} className='text-xs p-2 rounded-lg w-full text-black md:p-3 md:text-lg '  />
 
                         </div>
                     
