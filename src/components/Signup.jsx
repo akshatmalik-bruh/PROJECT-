@@ -9,7 +9,24 @@ function Signup() {
     formState: { errors,isSubmitting },
   } = useForm()
 
-  const onSubmit = (data) => console.log(data)
+  const onSubmit = async(data) => {
+
+        await fetch("http://localhost:3000/Signup",{
+            mode : "cors",
+            method:"POST",
+            headers :{
+              "Content-Type": "application/json"
+
+
+            },
+            body:  JSON.stringify(data),
+
+
+
+        })
+
+
+  }
   return (
     <>
              <div className=" flex flex-col h-screen w-full md:flex-row">

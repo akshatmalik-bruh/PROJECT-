@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link,useNavigate} from 'react-router-dom'
 import { useForm } from "react-hook-form"
 
 function LoginPage() {
@@ -9,8 +9,34 @@ function LoginPage() {
         watch,
         formState: { errors , isSubmitting},
       } = useForm()
-    
-      const onSubmit = (data) => console.log(data)
+      const nav = useNavigate();
+      const onSubmit = async(data) => {
+
+                
+                            const lol = await fetch("http://localhost:3000/login",{
+
+                                    mode:"cors",
+                                    method : "POST",
+                                    headers :    {
+                                            "Content-type" :"application/json"
+                                    },
+                                    body : JSON.stringify(data)
+
+
+                            })
+                            const res = await lol.json();
+                            if(res.bozo){
+                                nav("/Home")
+
+
+
+                            }
+                            else{
+                                nav("/");
+                            }
+
+
+      }
       
   return (
     <>
