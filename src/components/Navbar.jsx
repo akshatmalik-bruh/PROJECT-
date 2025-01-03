@@ -14,7 +14,7 @@ function Navbar() {
         </Link>
 
         <Link
-          to="/Logout"
+          to="/login"
           className="font-semibold text-red-500 md:text-xl bg-white p-3  rounded-xl text-xs m-0 hover:bg-red-500 hover:text-white"
         >
           Logout

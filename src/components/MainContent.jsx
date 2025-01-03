@@ -29,12 +29,12 @@ function MainContent() {
                     },
                 ].map((data, index) => (
                     <div key={index} className="flex flex-col gap-2">
-                        <label className="text-lg md:text-xl">{data.label}</label>
+                        <label className="text-lg md:text-2xl">{data.label}</label>
                         <input
                             type="text"
                             placeholder={data.placeholder}
                             {...register(data.ref, { required: true })}
-                            className="p-4 bg-slate-200 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="text-xl p-4 bg-slate-200 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-5"
                         />
                         {errors[data.ref] && (
                             <span className="text-red-500 text-sm">
