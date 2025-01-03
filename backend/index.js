@@ -5,9 +5,14 @@ const bcrypt = require("bcrypt")
 const cors = require("cors");
 const user = require("./db/database");
 const mongoose = require("mongoose");
+const cookie = require("cookie-parser");
+const userData = require("./db/data");
 
-
-app.use(cors());
+app.use(cookie());
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true
+}));
 
 app.use(express.json());
 app.post("/Signup",async(req,res) =>{
@@ -49,8 +54,12 @@ app.post("/login",async(req,res) =>{
 
         }
         bcrypt.compare(req.body.password,b.password,(err,result) => {
-                        if(result) {
-                            return res.send({bozo:true});
+                     
+            if(result) {
+                         const token =  jwt.sign({username : b.username , id : b._id},"shhh");
+                         res.cookie("token",token);
+
+                            return res.send({bozo:true,token});
                         }
                         else{
                             return res.send({bozo:false});
@@ -60,6 +69,9 @@ app.post("/login",async(req,res) =>{
         })
 
 
+})
+app.post("/datasubmit",async(req,res)=>{
+    
 })
 
 

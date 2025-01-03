@@ -6,7 +6,13 @@ mongoose.connect("mongodb://localhost:27017/userSignupinfo");
           username : String,
         Email : String,
         password : String,
+        data: [
+          {
+              dataid: { type: mongoose.Schema.Types.ObjectId, ref: "UserData" },
+          },
 
+        
+        ]
 
 
 
