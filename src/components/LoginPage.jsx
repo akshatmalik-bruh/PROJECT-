@@ -20,13 +20,18 @@ function LoginPage() {
                                     headers :    {
                                             "Content-type" :"application/json"
                                     },
-                                    body : JSON.stringify(data)
+                                    body : JSON.stringify(data),
+                                    credentials:"include"
 
 
                             })
                             const res = await lol.json();
+                            const token = res.token;
+                            localStorage.setItem("token",token);
+                            const decoded = JSON.parse(atob(token.split('.')[1]));
+
                             if(res.bozo){
-                                nav("/Home")
+                                nav(`/Home/${decoded.id}`);
 
 
 

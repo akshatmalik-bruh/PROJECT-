@@ -8,7 +8,22 @@ function MainContent() {
         formState: { errors , isSubmitting},
       } = useForm()
     
-      const onSubmit = (data) => console.log(data);
+      const onSubmit = (data) => {
+                    fetch("http://localhost:3000/datasubmit",{
+                       headers :  {
+                            "Content-type" : "application/json"
+                         }  , 
+                         body : JSON.stringify(data),
+                         Credential : "include",
+                         mode : "cors",
+                         method : "POST"
+
+
+
+                    })
+
+
+      };
 
   return (
             <>
