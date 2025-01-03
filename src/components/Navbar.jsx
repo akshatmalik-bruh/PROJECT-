@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <>
-      <div className="w-full flex justify-between p-5 bg-slate-950 fixed top-0 h-24  items-center">
+      <div className="w-full flex justify-between p-5 bg-teal-950 fixed top-0 h-24  items-center">
         <Link to="/">
           <img
-            src="https://media.istockphoto.com/id/1423278291/vector/69-number-sixty-nine-icon-sticker-on-gray-background.jpg?s=612x612&w=0&k=20&c=nXseodamJjLgLkCom7leAEKDZWt5eSpdKC06nf4mnv8="
+            src="https://img.freepik.com/premium-vector/number-69-logo-monogram-number-69-logo-line-style-usable-anniversary-business-logos_602671-1291.jpg"
             className="h-12 md:h-16 rounded-xl"
             alt=""
           />
